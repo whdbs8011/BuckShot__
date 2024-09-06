@@ -183,6 +183,7 @@ public class Gun : MonoBehaviour
                 Enemyd.Play("EnemyDie");
                 audioSource.PlayOneShot(shotClip);
                 em1--;
+                Debug.Log("으악");
             }
             
             if (nowBullit == 0)
@@ -190,6 +191,8 @@ public class Gun : MonoBehaviour
                 Debug.Log("aya"); //죽는 애니메이션, hp1--
                 Enemyd.Play("EnemyDie");
                 audioSource.PlayOneShot(shotClip);
+                em1--;
+                Debug.Log("으악");
             }
             else
             {
