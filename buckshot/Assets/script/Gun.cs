@@ -17,8 +17,8 @@ public class Gun : MonoBehaviour
     public TextMeshProUGUI fakeBulletTxt;
     public TextMeshProUGUI Player;
     public TextMeshProUGUI EnemyHp;
-    [SerializeField] private int pr1 = 3;
-    [SerializeField] private int em1 = 3;
+    public int pr1 = 3;
+    public int em1 = 3;
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip shotClip;
