@@ -24,8 +24,6 @@ public class Gun : MonoBehaviour
     [SerializeField] private AudioClip shotClip;
     [SerializeField] private AudioClip noShotClip;
     [SerializeField] private AudioClip reloadClip;
-
-    public Score score_save;
     public int isme;
     public Animator playerd;
     public Animator Enemyd;
@@ -134,7 +132,7 @@ public class Gun : MonoBehaviour
     {
         anim.Play("gunReLoding");
         audioSource.PlayOneShot(reloadClip);
-
+        bullet = 0;
         bullet = Random.Range(0, 10); //총 탄 개수
         real = (int)(Random.Range(1f, bullet / 2f)); //실탄 개수
         fake = bullet - real; // 가짜탄 개수
@@ -174,7 +172,7 @@ public class Gun : MonoBehaviour
         {
             Debug.Log(shotgunBullit[1]);
             int nowBullit;
-            int random = Random.Range(0, bullet + 2);
+            int random = Random.Range(0, bullet + 1);
             nowBullit = shotgunBullit[random];
             shotgunBullit.RemoveAt(random);
             anim.Play("gunEnemySelf");
@@ -216,7 +214,7 @@ public class Gun : MonoBehaviour
         {
             Debug.Log(shotgunBullit[1]);
             int nowBullit;
-            int random = Random.Range(0, bullet + 2);
+            int random = Random.Range(0, bullet + 1);
             nowBullit = shotgunBullit[random];
             shotgunBullit.RemoveAt(random);
             anim.Play("gunEnemyShot");
@@ -231,7 +229,6 @@ public class Gun : MonoBehaviour
                 isEnemy = false;
                 pr1--;
                 PlayerHp.text = $"Pr : {pr1}";
-                Debug.Log(em1);
                 Enemyf();
                 player();
             }
@@ -244,7 +241,6 @@ public class Gun : MonoBehaviour
                 isEnemy = false;
                 pr1--;
                 PlayerHp.text = $"Pr : {pr1}";
-                Debug.Log(em1);
                 Enemyf();
                 player();
             }
@@ -269,7 +265,7 @@ public class Gun : MonoBehaviour
         {
             Debug.Log(shotgunBullit[1]);
             int nowBullit;
-            int random = Random.Range(0, bullet + 2);
+            int random = Random.Range(0, bullet + 1);
             nowBullit = shotgunBullit[random];
             shotgunBullit.RemoveAt(random);
             Playerf();
@@ -348,7 +344,7 @@ public class Gun : MonoBehaviour
             HideButton();
             HideButton2();
             int nowBullit;
-            int random = Random.Range(0, bullet + 2);
+            int random = Random.Range(0, bullet + 1);
             nowBullit = shotgunBullit[random];
             shotgunBullit.RemoveAt(random);
             anim.Play("gunSelfShotIdle");
