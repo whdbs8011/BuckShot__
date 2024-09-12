@@ -15,7 +15,7 @@ public class Gun : MonoBehaviour
 {
     public TextMeshProUGUI realBulletTxt;
     public TextMeshProUGUI fakeBulletTxt;
-    public TextMeshProUGUI Player;
+    public TextMeshProUGUI PlayerHp;
     public TextMeshProUGUI EnemyHp;
     public int pr1 = 3;
     public int em1 = 3;
@@ -37,7 +37,7 @@ public class Gun : MonoBehaviour
     private bool Intro = false;
     private bool isEnemy = false; //적 턴인가?
 
-    private bool reload = false; // 장전을 해야할까?
+    //private bool reload = false; // 장전을 해야할까?
 
     //총알
     public int real; //실탄 개수
@@ -67,6 +67,8 @@ public class Gun : MonoBehaviour
         Invoke(nameof(ShowButton), 5f);
         Invoke(nameof(ShowButton2), 5f);
         anim.Play("gunIntro");
+        PlayerHp.text = $"Pr : {pr1}";
+        EnemyHp.text = $"Em : {em1}";
     }
 
     private void Update()
@@ -133,7 +135,7 @@ public class Gun : MonoBehaviour
         anim.Play("gunReLoding");
         audioSource.PlayOneShot(reloadClip);
 
-        bullet = Random.Range(2, 8); //총 탄 개수
+        bullet = Random.Range(0, 10); //총 탄 개수
         real = (int)(Random.Range(1f, bullet / 2f)); //실탄 개수
         fake = bullet - real; // 가짜탄 개수
 
@@ -172,7 +174,7 @@ public class Gun : MonoBehaviour
         {
             Debug.Log(shotgunBullit[1]);
             int nowBullit;
-            int random = Random.Range(0, bullet);
+            int random = Random.Range(0, bullet + 2);
             nowBullit = shotgunBullit[random];
             shotgunBullit.RemoveAt(random);
             anim.Play("gunEnemySelf");
@@ -183,15 +185,17 @@ public class Gun : MonoBehaviour
                 Enemyd.Play("EnemyDie");
                 audioSource.PlayOneShot(shotClip);
                 em1--;
+                PlayerHp.text = $"Em : {em1}";
                 Debug.Log("으악");
             }
             
-            if (nowBullit == 0)
+            else if (nowBullit == 0)
             {
                 Debug.Log("aya"); //죽는 애니메이션, hp1--
                 Enemyd.Play("EnemyDie");
                 audioSource.PlayOneShot(shotClip);
                 em1--;
+                EnemyHp.text = $"Em : {em1}";
                 Debug.Log("으악");
             }
             else
@@ -212,12 +216,13 @@ public class Gun : MonoBehaviour
         {
             Debug.Log(shotgunBullit[1]);
             int nowBullit;
-            int random = Random.Range(0, bullet);
+            int random = Random.Range(0, bullet + 2);
             nowBullit = shotgunBullit[random];
             shotgunBullit.RemoveAt(random);
             anim.Play("gunEnemyShot");
             bullet--;
             Enemyf();
+            player();
             if (nowBullit == 1)
             {
                 Debug.Log("aya"); //죽는 애니메이션, hp1--
@@ -225,24 +230,29 @@ public class Gun : MonoBehaviour
                 selfdie();
                 isEnemy = false;
                 pr1--;
+                PlayerHp.text = $"Pr : {pr1}";
                 Debug.Log(em1);
+                Enemyf();
                 player();
             }
             
-            if (nowBullit == 0)
+            else if (nowBullit == 0)
             {
                 Debug.Log("aya"); //죽는 애니메이션, hp1--
                 audioSource.PlayOneShot(shotClip);
                 selfdie();
                 isEnemy = false;
                 pr1--;
+                PlayerHp.text = $"Pr : {pr1}";
                 Debug.Log(em1);
+                Enemyf();
                 player();
             }
             else
             {
                 Debug.Log("an aya");
                 audioSource.PlayOneShot(noShotClip);
+                Enemyf();
                 player();
             }
         }
@@ -259,7 +269,7 @@ public class Gun : MonoBehaviour
         {
             Debug.Log(shotgunBullit[1]);
             int nowBullit;
-            int random = Random.Range(0, bullet);
+            int random = Random.Range(0, bullet + 2);
             nowBullit = shotgunBullit[random];
             shotgunBullit.RemoveAt(random);
             Playerf();
@@ -273,16 +283,18 @@ public class Gun : MonoBehaviour
                 audioSource.PlayOneShot(shotClip);
                 isEnemy = true;
                 em1--;
+                EnemyHp.text = $"Em : {em1}";
                 Debug.Log(em1);
                 Enemy();
             }
             
-            if (nowBullit == 0)
+            else if (nowBullit == 0)
             {
                 Debug.Log("aya"); //적 죽는 애니메이션, hp1--
                 audioSource.PlayOneShot(shotClip);
                 Enemyd.Play("EnemyDie");
                 em1--;
+                EnemyHp.text = $"Em : {em1}";
                 Debug.Log(em1);
                 isEnemy = true;
                 Enemy();
@@ -333,13 +345,14 @@ public class Gun : MonoBehaviour
         if (bullet != 0)
         {
             Debug.Log(shotgunBullit[1]);
+            HideButton();
+            HideButton2();
             int nowBullit;
-            int random = Random.Range(0, bullet);
+            int random = Random.Range(0, bullet + 2);
             nowBullit = shotgunBullit[random];
             shotgunBullit.RemoveAt(random);
             anim.Play("gunSelfShotIdle");
             bullet--;
-            Playerf();
             if (nowBullit == 1)
             {
                 Debug.Log("aya"); //죽는 애니메이션, hp1--
@@ -347,24 +360,28 @@ public class Gun : MonoBehaviour
                 Invoke(nameof(selfdie), 1.5f);
                 pr1--;
                 Debug.Log(pr1);
-                isEnemy = true;
-                Enemy();
+                Invoke(nameof(HideButton), 1.8f);
+                Invoke(nameof(HideButton2), 1.8f);
+                PlayerHp.text = $"Pr : {pr1}";
             }
 
-            if (nowBullit == 0)
+            else if (nowBullit == 0)
             {
                 Debug.Log("aya"); //죽는 애니메이션, hp1--
                 Invoke(nameof(selfdie), 1.5f);
                 pr1--;
                 Debug.Log(pr1);
-                isEnemy = true;
-                Enemy();
+                Invoke(nameof(ShowButton), 1.8f);
+                Invoke(nameof(ShowButton2), 1.8f);
+                PlayerHp.text = $"Pr : {pr1}";
             }
             else
             {
                 Debug.Log("an aya");
                 audioSource.PlayOneShot(noShotClip);
                 player();
+                Invoke(nameof(ShowButton), 1.8f);
+                Invoke(nameof(ShowButton2), 1.8f);
             }
         }
         else
