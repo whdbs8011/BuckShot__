@@ -133,7 +133,7 @@ public class Gun : MonoBehaviour
         anim.Play("gunReLoding");
         audioSource.PlayOneShot(reloadClip);
         bullet = 0;
-        bullet = Random.Range(0, 10); //총 탄 개수
+        bullet = Random.Range(1, 7); //총 탄 개수
         real = (int)(Random.Range(1f, bullet / 2f)); //실탄 개수
         fake = bullet - real; // 가짜탄 개수
 
@@ -215,7 +215,7 @@ public class Gun : MonoBehaviour
             Debug.Log(shotgunBullit[1]);
             int nowBullit;
             int random = Random.Range(0, bullet);
-            nowBullit = shotgunBullit[random];
+            nowBullit = shotgunBullit[random + 1];
             shotgunBullit.RemoveAt(random);
             anim.Play("gunEnemyShot");
             bullet--;
@@ -344,7 +344,7 @@ public class Gun : MonoBehaviour
             HideButton2();
             int nowBullit;
             int random = Random.Range(0, bullet);
-            nowBullit = shotgunBullit[random];
+            nowBullit = shotgunBullit[random + 1];
             shotgunBullit.RemoveAt(random);
             anim.Play("gunSelfShotIdle");
             bullet--;
