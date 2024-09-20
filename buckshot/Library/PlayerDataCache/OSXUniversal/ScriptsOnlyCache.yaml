@@ -1,12 +1,9 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - Bullet
     - Gun
-    - Player
     - Scenes
     - Scenes1
-    - Score
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.RiderScriptEditorData
     - Packages.Rider.Editor.RiderScriptEditorPersistedState
@@ -25,10 +22,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -125,13 +120,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3086}
     - Class: 114
-      Script: {instanceID: 5248}
+      Script: {instanceID: 4296}
+    - Class: 114
+      Script: {instanceID: 5250}
     - Class: 114
       Script: {instanceID: 5546}
     - Class: 114
       Script: {instanceID: 6010}
-    - Class: 114
-      Script: {instanceID: 37722}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -200,11 +195,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3086}
     - Class: 114
-      Script: {instanceID: 5002}
+      Script: {instanceID: 5004}
     - Class: 114
-      Script: {instanceID: 5248}
-    - Class: 114
-      Script: {instanceID: 5534}
+      Script: {instanceID: 5250}
     - Class: 114
       Script: {instanceID: 5546}
     - Class: 114
@@ -212,9 +205,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 6010}
     - Class: 114
-      Script: {instanceID: 6388}
+      Script: {instanceID: 23312}
     - Class: 114
-      Script: {instanceID: 6722}
+      Script: {instanceID: 23314}
+    - Class: 114
+      Script: {instanceID: 23322}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -273,13 +268,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3086}
     - Class: 114
-      Script: {instanceID: 5248}
+      Script: {instanceID: 4296}
+    - Class: 114
+      Script: {instanceID: 5250}
     - Class: 114
       Script: {instanceID: 5546}
     - Class: 114
       Script: {instanceID: 6010}
-    - Class: 114
-      Script: {instanceID: 37722}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -356,17 +351,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4064}
     - Class: 114
-      Script: {instanceID: 4314}
+      Script: {instanceID: 4316}
     - Class: 114
-      Script: {instanceID: 5002}
+      Script: {instanceID: 5004}
     - Class: 114
-      Script: {instanceID: 5248}
+      Script: {instanceID: 5250}
     - Class: 114
       Script: {instanceID: 5546}
     - Class: 114
       Script: {instanceID: 6010}
     - Class: 114
-      Script: {instanceID: 6388}
+      Script: {instanceID: 23322}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -490,7 +485,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 6dadcc29ac0eca49f7f1ebcb061dcf19
+      Hash: 9a4f61e3e40098b2dabdafba35b4907f
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Gun
@@ -796,6 +791,12 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
+      Hash: 4b086badd596413b98330ef53350d1ea
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Scenes1
+  - hash:
+      serializedVersion: 2
       Hash: 9078325c2a6f6a2d9612ade897511860
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
@@ -952,12 +953,6 @@ ScriptsOnlyBuild:
     className: StateGraphAsset
   - hash:
       serializedVersion: 2
-      Hash: 086af52166039182739c227e993a6095
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Score
-  - hash:
-      serializedVersion: 2
       Hash: 540882762544409cc4530e60db00e951
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -1054,12 +1049,6 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: a1bd36d0ad30bbccb2340f37ad5d5679
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Player
-  - hash:
-      serializedVersion: 2
       Hash: 4878e735441f4041539853759559c86f
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -1132,12 +1121,6 @@ ScriptsOnlyBuild:
     className: EventTrigger
   - hash:
       serializedVersion: 2
-      Hash: ddb5f01b52db5ecf457299264bf039f4
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Bullet
-  - hash:
-      serializedVersion: 2
       Hash: a89b0448af4e1cd103a77f9fec0a961f
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1166,12 +1149,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: ControlTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 7a22a60d9cbdc63e61839fdf52f52f69
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Enemy
   - hash:
       serializedVersion: 2
       Hash: d5cd7f207e91ca8336c65a577a6fb2a0
@@ -1250,16 +1227,10 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 4b086badd596413b98330ef53350d1ea
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Scenes1
   platform: 2
   scenePathNames:
   - Assets/Scenes/title.unity
   - Assets/Scenes/SampleScene.unity
   - Assets/Scenes/Win.unity
   - Assets/Scenes/Lose.unity
-  playerPath: /Users/joyun/Sannabang/BuckShot__/buckshot/BuckShot.app
+  playerPath: /Users/joyun/Downloads/BuckShot/BuckShot.app

@@ -173,8 +173,8 @@ public class Gun : MonoBehaviour
             Debug.Log(shotgunBullit[1]);
             int nowBullit;
             int random = Random.Range(0, bullet);
-            nowBullit = shotgunBullit[random];
-            shotgunBullit.RemoveAt(random);
+            nowBullit = shotgunBullit[random + 1];
+            shotgunBullit.RemoveAt(random + 1);
             anim.Play("gunEnemySelf");
             bullet--;
             if (nowBullit == 1)
@@ -216,7 +216,7 @@ public class Gun : MonoBehaviour
             int nowBullit;
             int random = Random.Range(0, bullet);
             nowBullit = shotgunBullit[random + 1];
-            shotgunBullit.RemoveAt(random);
+            shotgunBullit.RemoveAt(random + 1);
             anim.Play("gunEnemyShot");
             bullet--;
             Enemyf();
@@ -266,8 +266,8 @@ public class Gun : MonoBehaviour
             Debug.Log(shotgunBullit[1]);
             int nowBullit;
             int random = Random.Range(0, bullet);
-            nowBullit = shotgunBullit[random];
-            shotgunBullit.RemoveAt(random);
+            nowBullit = shotgunBullit[random + 1];
+            shotgunBullit.RemoveAt(random + 1);
             Playerf();
             anim.Play("gunShot");
             bullet--;
@@ -345,7 +345,7 @@ public class Gun : MonoBehaviour
             int nowBullit;
             int random = Random.Range(0, bullet);
             nowBullit = shotgunBullit[random + 1];
-            shotgunBullit.RemoveAt(random);
+            shotgunBullit.RemoveAt(random + 1);
             anim.Play("gunSelfShotIdle");
             bullet--;
             if (nowBullit == 1)
