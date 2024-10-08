@@ -133,18 +133,18 @@ public class Gun : MonoBehaviour
         anim.Play("gunReLoding");
         audioSource.PlayOneShot(reloadClip);
         bullet = 0;
-        bullet = Random.Range(1, 7); //총 탄 개수
+        bullet = Random.Range(2, 8); //총 탄 개수
         real = (int)(Random.Range(1f, bullet / 2f)); //실탄 개수
         fake = bullet - real; // 가짜탄 개수
 
         for (int i = 0; i < real; i++) //실탄인지 공포탄인지 구별하는 
         {
-            shotgunBullit[i] = 1;
+            shotgunBullit.Add(1);
         }
 
         for (int i = 0; i < fake; i++)
         {
-            shotgunBullit[i] = 2;
+            shotgunBullit.Insert(Random.Range(0, shotgunBullit.Count), 2);
         }
 
         Debug.Log(real);
@@ -170,11 +170,11 @@ public class Gun : MonoBehaviour
     {
         if (bullet != 0)
         {
-            Debug.Log(shotgunBullit[1]);
+            Debug.Log(shotgunBullit[0]);
             int nowBullit;
             int random = Random.Range(0, bullet);
-            nowBullit = shotgunBullit[random + 1];
-            shotgunBullit.RemoveAt(random + 1);
+            nowBullit = shotgunBullit[random];
+            shotgunBullit.RemoveAt(random);
             anim.Play("gunEnemySelf");
             bullet--;
             if (nowBullit == 1)
@@ -212,11 +212,11 @@ public class Gun : MonoBehaviour
     {
         if (bullet != 0)
         {
-            Debug.Log(shotgunBullit[1]);
+            Debug.Log(shotgunBullit[0]);
             int nowBullit;
             int random = Random.Range(0, bullet);
-            nowBullit = shotgunBullit[random + 1];
-            shotgunBullit.RemoveAt(random + 1);
+            nowBullit = shotgunBullit[random];
+            shotgunBullit.RemoveAt(random);
             anim.Play("gunEnemyShot");
             bullet--;
             Enemyf();
@@ -263,11 +263,11 @@ public class Gun : MonoBehaviour
     {
         if (bullet != 0)
         {
-            Debug.Log(shotgunBullit[1]);
+            Debug.Log(shotgunBullit[0]);
             int nowBullit;
             int random = Random.Range(0, bullet);
-            nowBullit = shotgunBullit[random + 1];
-            shotgunBullit.RemoveAt(random + 1);
+            nowBullit = shotgunBullit[random];
+            shotgunBullit.RemoveAt(random);
             Playerf();
             anim.Play("gunShot");
             bullet--;
@@ -339,13 +339,13 @@ public class Gun : MonoBehaviour
     {
         if (bullet != 0)
         {
-            Debug.Log(shotgunBullit[1]);
+            Debug.Log(shotgunBullit[0]);
             HideButton();
             HideButton2();
             int nowBullit;
             int random = Random.Range(0, bullet);
-            nowBullit = shotgunBullit[random + 1];
-            shotgunBullit.RemoveAt(random + 1);
+            nowBullit = shotgunBullit[random];
+            shotgunBullit.RemoveAt(random);
             anim.Play("gunSelfShotIdle");
             bullet--;
             if (nowBullit == 1)
