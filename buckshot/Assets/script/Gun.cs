@@ -149,8 +149,8 @@ public class Gun : MonoBehaviour
 
         Debug.Log(real);
         Debug.Log(fake);
-        realBulletTxt.text = $"real : {real}";
-        fakeBulletTxt.text = $"fake : {fake}";
+        // realBulletTxt.text = $"real : {real}";
+        // fakeBulletTxt.text = $"fake : {fake}";
     }
 
     //재장전=============
