@@ -354,6 +354,7 @@
 "Assets/Scenes/Scenes.cs"
 "Assets/Scenes/Scenes1.cs"
 "Assets/script/Gun.cs"
+"Assets/script/talk.cs"
 -langversion:9.0
 /deterministic
 /optimize+
